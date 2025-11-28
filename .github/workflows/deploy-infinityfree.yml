@@ -16,6 +16,24 @@ jobs:
         with:
           php-version: '8.1'
 
+      - name: Prepare deploy folder
+        run: |
+          set -e
+          rm -rf deploy
+          mkdir -p deploy
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.vscode' \
+            --exclude='.env' \
+            --exclude='.env.*' \
+            --exclude='node_modules' \
+            --exclude='vendor' \
+            --exclude='*.sql' \
+            ./ deploy/
+          echo "deploy folder contents:"
+          ls -la deploy | sed -n '1,200p'
+
       - name: Deploy via FTP to InfinityFree
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -24,7 +42,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
-          local-dir: "./public/"
+          local-dir: "deploy"
           server-dir: "/htdocs/"
           # passive: true (default)
 

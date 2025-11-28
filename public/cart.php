@@ -51,7 +51,7 @@ $product = new Product($db);
                     <a href="logout.php">Đăng xuất</a>
                 <?php else: ?>
                     <a href="register.php">Đăng ký</a>
-                    <a href="login.php">Đăng nhập</a>
+                    <a href="login.php">Đăng nhậppp</a>
                 <?php endif; ?>
             </div>
         </div>
