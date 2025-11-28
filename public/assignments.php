@@ -49,7 +49,7 @@ $files = array_diff($files, ['.', '..']);
         <div>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <?php if ($_SESSION['is_admin']): ?>
-                    <a href="../admin">Admin</a>
+                    <a href="admin">Admin</a>
                 <?php endif; ?>
                 <a href="logout.php">Đăng xuất</a>
             <?php else: ?>
