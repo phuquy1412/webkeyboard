@@ -59,7 +59,7 @@ $stmt->execute([$orderId]);
 $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$order) {
-    die("Đơn hàng không tồn tại");
+    die("Đơn hàng không tồn tạiii");
 }
 
 // **GIẢI PHÁP D - BƯỚC 2: Dựa vào resultCode để hiển thị (không query DB)**
