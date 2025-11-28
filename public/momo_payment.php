@@ -23,14 +23,27 @@ $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $endpoint = 'https://test-payment.momo.vn/v2/gateway/api/create';
 
+// Detect current host and build URLs dynamically
+$currentScheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$currentHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+// Build redirect and IPN URLs based on current host
+if (strpos($currentHost, 'localhost') !== false || strpos($currentHost, '127.0.0.1') !== false) {
+    // Local development
+    $baseUrl = "http://localhost/doanweb/public";
+} else {
+    // Production (InfinityFree or other host)
+    $baseUrl = $currentScheme . "://" . $currentHost;
+}
+
 // Request parameters
 $requestId = time() . "";
 $requestType = "captureWallet";
 $orderInfo = "Thanh toán đơn hàng #" . $orderId;
-// Giữ lại orderId gốc trong extraData và redirectUrl để xử lý khi MoMo redirect về
+// Giữ lại orderId gốc trong extraData để xử lý khi MoMo redirect về
 $extraData = base64_encode(json_encode(['orderId' => $orderId])); 
-$redirectUrl = "http://localhost/doanweb/public/momo_return.php?orderId=" . $orderId;
-$ipnUrl = "http://localhost/doanweb/public/momo_ipn.php";
+$redirectUrl = $baseUrl . "/momo_return.php?orderId=" . $orderId;
+$ipnUrl = $baseUrl . "/momo_ipn.php";
 $lang = 'vi';
 
 // Tạo signature - SỬ DỤNG $momoOrderId
