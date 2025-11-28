@@ -48,7 +48,7 @@ $product = new Product($db);
                 <a href="cart.php">Giỏ hàng</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="#">Xin chào, <?php echo htmlspecialchars($_SESSION['full_name']); ?></a>
-                    <a href="logout.php">Đăng xuấttt</a>
+                    <a href="logout.php">Đăng xuất</a>
                 <?php else: ?>
                     <a href="register.php">Đăng ký</a>
                     <a href="login.php">Đăng nhập</a>
