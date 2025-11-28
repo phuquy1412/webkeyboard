@@ -21,6 +21,7 @@ jobs:
           set -e
           rm -rf deploy
           mkdir -p deploy
+          echo "-> copy public/ contents into deploy/ (so index.php is at deploy/index.php)"
           rsync -av --delete \
             --exclude='.git' \
             --exclude='.github' \
@@ -30,8 +31,25 @@ jobs:
             --exclude='node_modules' \
             --exclude='vendor' \
             --exclude='*.sql' \
-            ./ deploy/
-          echo "deploy folder contents:"
+            public/ deploy/
+
+          echo "-> copy other top-level folders used by the app (if they exist)"
+          for d in config admin assets core img models momo CollectionLink common PayMoMo QuickPay statics; do
+            if [ -d "$d" ]; then
+              rsync -av --delete --exclude='.git' --exclude='.github' --exclude='.vscode' --exclude='node_modules' --exclude='vendor' "$d/" "deploy/$d/"
+            fi
+          done
+
+          echo "-> copy root php files that belong in web root (if any)."
+          # copy php files from repo root (common entrypoints) into deploy/
+          shopt -s nullglob
+          for f in *.php *.html *.htaccess; do
+            if [ -f "$f" ]; then
+              cp -p "$f" deploy/ || true
+            fi
+          done
+
+          echo "deploy folder contents (top-level):"
           ls -la deploy | sed -n '1,200p'
 
       - name: Deploy via FTP to InfinityFree

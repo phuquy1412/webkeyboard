@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // Failure: Incorrect password or user not found
-            $message = "Sai mật khẩu hoặc email không tồn tạiiiiii.";
+            $message = "Sai mật khẩu hoặc email không tồn tại.";
         }
     } else {
         // Failure: Fields were empty
