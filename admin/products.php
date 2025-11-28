@@ -3,7 +3,7 @@ session_start();
 
 // Bảo vệ trang, chỉ admin mới có quyền truy cập
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header("Location: ../public/login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Di chuyển file đã upload
             if (move_uploaded_file($_FILES["image_file"]["tmp_name"], $target_file)) {
                 // Lưu đường dẫn tương đối vào database
-                $product->image_url = '/doanweb/img/' . $safe_filename;
+                $product->image_url = 'img/' . $safe_filename;
             } else {
                 $error = "Đã xảy ra lỗi khi upload file.";
                 // Cân nhắc dừng lại tại đây nếu upload ảnh là bắt buộc

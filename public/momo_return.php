@@ -5,11 +5,20 @@
  * Giải pháp D: Kết hợp resultCode từ URL + IPN callback
  */
 session_start();
+
+// Detect host and redirect if needed (for localhost testing)
+$isLocalhost = in_array($_SERVER['HTTP_HOST'] ?? '', ['localhost', '127.0.0.1', 'localhost:80', 'localhost:8080']);
+if ($isLocalhost && isset($_GET['redirectTo'])) {
+    // If localhost received a redirectTo param, redirect to production
+    $redirectUrl = $_GET['redirectTo'];
+    header("Location: $redirectUrl");
+    exit();
+}
+
 include_once 'config/database.php';
 
 // Lấy dữ liệu từ MoMo redirect
 $resultCode = isset($_GET['resultCode']) ? intval($_GET['resultCode']) : -1;
-echo "resultCode la $resultCode";
 $extraData = isset($_GET['extraData']) ? $_GET['extraData'] : null;
 
 // Parse extraData để lấy orderId

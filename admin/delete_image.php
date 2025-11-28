@@ -4,7 +4,7 @@ session_start();
 // Bảo vệ trang, chỉ admin mới có quyền truy cập
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     // Nếu không phải admin, không làm gì cả hoặc chuyển hướng
-    header("Location: ../public/login.php");
+    header("Location: ../login.php");
     exit;
 }
 

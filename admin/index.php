@@ -6,7 +6,7 @@ session_start();
 
 // Bảo vệ trang admin - chỉ cho phép admin truy cập
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header("Location: ../public/login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -56,9 +56,9 @@ $products = $product->getAll();
         <div class="nav">
             <div class="logo">Keyboard Shop - Admin</div>
             <div class="nav-links">
-                <a href="../public/index.php">Trang chủ</a>
+                <a href="../index.php">Trang chủ</a>
                 <a href="#">Xin chào, <?php echo htmlspecialchars($_SESSION['full_name']); ?></a>
-                <a href="../public/logout.php">Đăng xuất</a>
+                <a href="../logout.php">Đăng xuất</a>
             </div>
         </div>
     </div>
