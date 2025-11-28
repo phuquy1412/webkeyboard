@@ -5,7 +5,7 @@
  */
 header("Content-Type: application/json");
 
-include_once '../config/database.php';
+include_once 'config/database.php';
 
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 

@@ -4,15 +4,15 @@ session_start();
 // Redirect if user is already logged in
 if (isset($_SESSION['user_id'])) {
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true) {
-        header("Location: ../admin/index.php");
+        header("Location: admin/index.php");
     } else {
         header("Location: index.php");
     }
     exit();
 }
 
-include_once '../config/database.php';
-include_once '../models/User.php';
+include_once 'config/database.php';
+include_once 'models/User.php';
 
 $message = '';
 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Redirect based on admin status
                 if ($_SESSION['is_admin']) {
-                    header("Location: ../admin/index.php");
+                    header("Location: admin/index.php");
                 } else {
                     header("Location: index.php");
                 }

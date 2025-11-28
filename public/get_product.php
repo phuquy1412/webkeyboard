@@ -3,8 +3,8 @@
  * API endpoint để lấy thông tin sản phẩm theo ID
  */
 header('Content-Type: application/json');
-include_once '../config/database.php';
-include_once '../models/Product.php';
+include_once 'config/database.php';
+include_once 'models/Product.php';
 
 try {
     if (!isset($_GET['id']) || empty($_GET['id'])) {

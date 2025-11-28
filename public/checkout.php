@@ -4,9 +4,9 @@
  * Kết nối với MoMo payment
  */
 session_start();
-include_once '../config/database.php';
-include_once '../models/Product.php';
-include_once '../models/User.php'; // Include User model
+include_once 'config/database.php';
+include_once 'models/Product.php';
+include_once 'models/User.php'; // Include User model
 
 // Kiểm tra user đã login chưa
 if (!isset($_SESSION['user_id'])) {

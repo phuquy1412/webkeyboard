@@ -4,7 +4,7 @@
  * Khởi tạo giao dịch thanh toán với MoMo
  */
 session_start();
-include_once '../config/database.php';
+include_once 'config/database.php';
 
 // Kiểm tra order ID
 $orderId = isset($_GET['orderId']) ? intval($_GET['orderId']) : 0;

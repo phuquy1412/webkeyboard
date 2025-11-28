@@ -5,7 +5,7 @@
  * Giải pháp D: Kết hợp resultCode từ URL + IPN callback
  */
 session_start();
-include_once '../config/database.php';
+include_once 'config/database.php';
 
 // Lấy dữ liệu từ MoMo redirect
 $resultCode = isset($_GET['resultCode']) ? intval($_GET['resultCode']) : -1;

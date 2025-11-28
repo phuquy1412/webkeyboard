@@ -3,7 +3,7 @@
  * Order Success Page - Trang thành công cho COD
  */
 session_start();
-include_once '../config/database.php';
+include_once 'config/database.php';
 
 $orderId = isset($_GET['orderId']) ? intval($_GET['orderId']) : 0;
 

@@ -7,8 +7,8 @@ session_start();
  * Process Payment - Xử lý giao dịch thanh toán
  * Điều hướng tới MoMo hoặc lưu order (COD)
  */
-include_once '../config/database.php';
-include_once '../models/Product.php';
+include_once 'config/database.php';
+include_once 'models/Product.php';
 
 // Log request
 error_log("=== CHECKOUT REQUEST ===");

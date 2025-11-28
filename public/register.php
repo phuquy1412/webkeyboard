@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once '../config/database.php';
-include_once '../models/User.php';
+include_once 'config/database.php';
+include_once 'models/User.php';
 
 $database = new Database();
 $db = $database->getConnection();

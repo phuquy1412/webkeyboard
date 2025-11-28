@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once '../config/database.php';
-include_once '../models/Product.php';
+include_once 'config/database.php';
+include_once 'models/Product.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -43,7 +43,7 @@ $products = $product->getAll();
                 <a href="cart.php">Giỏ hàng</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
-                        <a href="../admin/index.php">Admin</a>
+                        <a href="admin/index.php">Admin</a>
                     <?php endif; ?>
                     <a href="#">Xin chào, <?php echo htmlspecialchars($_SESSION['full_name']); ?></a>
                     <a href="logout.php">Đăng xuất</a>
