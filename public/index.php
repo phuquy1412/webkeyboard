@@ -90,7 +90,7 @@ $products = $product->getAll();
                 cart[productId] = 1;
             }
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Đã thêm vào giỏ hàng!');
+            alert('Đã thêm vào giỏ hàng');
         }
     </script>
 </body>
