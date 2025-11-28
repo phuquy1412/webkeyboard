@@ -25,7 +25,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: "./public"
-          server-dir: "/htdocs"
+          server-dir: "/htdocs/"
           # passive: true (default)
 
       - name: Done
