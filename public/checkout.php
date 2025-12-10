@@ -170,23 +170,26 @@ foreach ($cart as $productId => $quantity) {
                         <input type="hidden" name="totalAmount" value="<?php echo $totalAmount; ?>">
                         <input type="hidden" id="paymentMethod" name="paymentMethod" value="momo_wallet">
 
-                        <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Chọn phương thức thanh toán</h2>
+                       <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Chọn phương thức thanh toán</h2>
                         
                         <div class="payment-methods">
                             <!-- MoMo E-Wallet -->
-                            <label class="payment-method selected" onclick="selectPaymentMethod('momo_wallet')">
+                            <div class="payment-method selected" onclick="selectPaymentMethod('momo_wallet', this)">
                                 <input type="radio" name="payment" value="momo_wallet" checked>
-                                <strong>💳 MoMo E-Wallet</strong>
-                                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Thanh toán bằng ví MoMo</p>
-                            </label>
+                                <div class="payment-content">
+                                    <span class="payment-title">💳 MoMo E-Wallet</span>
+                                    <p class="payment-description">Thanh toán bằng ví MoMo</p>
+                                </div>
+                            </div>
 
                             <!-- Cash on Delivery -->
-                            <label class="payment-method" onclick="selectPaymentMethod('cod')">
+                            <div class="payment-method" onclick="selectPaymentMethod('cod', this)">
                                 <input type="radio" name="payment" value="cod">
-                                <strong>💰 Thanh toán khi nhận hàng</strong>
-                                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Trả tiền khi nhận hàng</p>
-                            </label>
-                        </div>
+                                <div class="payment-content">
+                                    <span class="payment-title">💰 Thanh toán khi nhận hàng</span>
+                                    <p class="payment-description">Trả tiền khi nhận hàng</p>
+                                </div>
+                            </div>
 
                         <button type="submit" class="btn btn-primary btn-block" style="margin-top: 2rem;">
                             Tiếp tục thanh toán
