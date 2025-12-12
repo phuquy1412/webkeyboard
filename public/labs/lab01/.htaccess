@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{QUERY_STRING} ^mod=news&id=([0-9]+)$ [NC]
+RewriteRule ^index\.php$ news/%1.html? [R=301,L]
+
+RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,NC,L]
+
+DirectoryIndex myindex.php index.php
+
+Options -Indexes
